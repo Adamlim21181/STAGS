@@ -11,8 +11,20 @@ def homepage():
 
 #creating a page to add gymnasts
 @app.route('/addgymnast')
-def gymnast():     
-    return render_template('gymnast.html')
+def gymnast():
+    form = None
+    if len(request.args) > 0:
+        #getting the gymnast name from the websites input
+        form = request.args.get('registorname')
+
+        #adding the gymnast name to the database
+        conn = sqlite3.connect('database')
+        cur = conn.cursor()
+        sql = ("INSERT INTO gymnast (gymnast_name) VALUES(?)")
+        cur.execute(sql, (form,))
+        conn.commit()
+        conn.close()
+    return render_template('gymnast.html', form=form)
 
 #creating a page to add scores
 @app.route('/addscores')
