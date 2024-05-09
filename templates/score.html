@@ -7,4 +7,45 @@
 <h1>score</h1>
 
 
+<!--Creating a table to display the registerd gymnasts with their id's-->
+<table>
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        {% for col in row %}
+        <td>{{ col }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<!--Creating a table to display apparatus with id-->
+<table>
+    <tr>
+        <th>id</th>
+        <th>Apparatus</th>
+    </tr>
+    {% for row in appdata %}
+    <tr>
+        {% for col in row %}
+        <td>{{ col }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+
+<!--Form to input data to add scores to the database-->
+<form>
+    <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1"></p>
+    <p>Apparatus id: <input type="number" name = "app"></p>
+    <p>Execution Score: <input type="number" name = "add-escore" placeholder="1"></p>
+    <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1"></p>
+    <input type="submit">
+
+
+</form>
+
 {% endblock %}
