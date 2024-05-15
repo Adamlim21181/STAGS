@@ -7,134 +7,193 @@
 <h1>leaderboard</h1>
 
 <!--Table to display the all around leaderboard-->
-<h3>All Around</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Score</th>
-    </tr>
-    {% for row in overalldata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "alldrp()">All Around</button>
+    <div id="allaround" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            {% for row in overalldata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the floor leaderboard-->
-<h3>Floor</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in floordata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "floordrp()">Floor</button>
+    <div id="floor" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in floordata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the pommel leaderboard-->
-<h3>Pommel</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in pommeldata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "pommeldrp()">Pommel</button>
+    <div id="pommel" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in pommeldata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the rings leaderboard-->
-<h3>Rings</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in ringsdata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "ringsdrp()">Rings</button>
+    <div id="rings" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in ringsdata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the vault leaderboard-->
-<h3>Vault</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in vaultdata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "vaultdrp()">Vault</button>
+    <div id="vault" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in vaultdata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the Parallel bars leaderboard-->
-<h3>Parallel bars</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in pbardata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "pbarsdrp()">P-bars</button>
+    <div id = "pbars" class = "dropdown-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in pbardata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 <!--Table to display the high bar leaderboard-->
-<h3>High bar</h3>
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Execution</th>
-        <th>Difficulty</th>
-        <th>Total</th>
-    </tr>
-    {% for row in highbardata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+<div class = "dropdown">
+    <button onclick = "highbardrp()">High bar</button>
+    <div id = "highbar" class = "dropdown-content">  
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
+                <th>Total</th>
+            </tr>
+            {% for row in highbardata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+<script>
+/* When the button is clicked switch between hiding and showing the dropdown content */
+function alldrp() {
+    document.getElementById("allaround").classList.toggle("show");
+}
+
+function floordrp() {
+  document.getElementById("floor").classList.toggle("show");
+}
+
+function pommeldrp() {
+  document.getElementById("pommel").classList.toggle("show");
+}
+
+function ringsdrp() {
+  document.getElementById("rings").classList.toggle("show");
+}
+
+function vaultdrp() {
+  document.getElementById("vault").classList.toggle("show");
+}
+
+function pbarsdrp() {
+  document.getElementById("pbars").classList.toggle("show");
+}
+
+function highbardrp() {
+  document.getElementById("highbar").classList.toggle("show");
+}
+</script>
 
 {% endblock %}
