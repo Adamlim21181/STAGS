@@ -16,25 +16,50 @@ def gymnast():
     if len(request.args) > 0:
         #getting the gymnast name from the websites input
         form = request.args.get('registorname')
+        if form is not None:
+            #adding the gymnast name to the database
+            conn = sqlite3.connect('database')
+            cur = conn.cursor()
+            sql = ("INSERT INTO gymnast (gymnast_name) VALUES(?)")
+            cur.execute(sql, (form,))
+            conn.commit()
+            conn.close()
 
-        #adding the gymnast name to the database
-        conn = sqlite3.connect('database')
-        cur = conn.cursor()
-        sql = ("INSERT INTO gymnast (gymnast_name) VALUES(?)")
-        cur.execute(sql, (form,))
-        conn.commit()
-        conn.close()
-    return render_template('gymnast.html', form=form)
+    #viewing registerd gymnasts
+    conn = sqlite3.connect('database')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM gymnast")
+    regdata = cur.fetchall()
+    conn.close()
+
+    
+    id = None
+    name = None
+    if len(request.args) > 0:
+        #getting the registered gymnasts id and new name
+        id = request.args.get('id')
+        name = request.args.get('newname')
+
+        if id is not None and name is not None: 
+            #replacing the old gymnast name with the new gymast name
+            conn = sqlite3.connect('database')
+            cur = conn.cursor()
+            sql = ("UPDATE gymnast SET gymnast_name = ? WHERE gymnast_id = ?")
+            cur.execute(sql, (name, id))
+            conn.commit()
+            conn.close()
+
+    return render_template('gymnast.html', regdata=regdata)
 
 #creating a page to add scores
 @app.route('/addscores')
 def scores():
 
     #viewing gymnasts that are in the database
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database')  
     cur = conn.cursor()
     cur.execute("SELECT * FROM gymnast")
-    data = cur.fetchall()
+    gymdata = cur.fetchall()
     conn.close()
 
     #viewing apparatus with their id's
@@ -63,7 +88,7 @@ def scores():
     conn.commit()
     conn.close()
 
-    return render_template("score.html", appdata=appdata, data=data)
+    return render_template("score.html", appdata=appdata, gymdata=gymdata)
 
 #creating a page to view leaderboards
 @app.route('/leaderboard')
@@ -119,11 +144,6 @@ def leaderboard():
     conn.close()
 
     return render_template("leaderboard.html", overalldata=overalldata, floordata=floordata, pommeldata=pommeldata, ringsdata=ringsdata, vaultdata=vaultdata, pbardata=pbardata, highbardata=highbardata)
-
-#creating a page to edit gymnasts or/and scores
-@app.route('/edit')
-def edit():
-    return render_template("edit.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
