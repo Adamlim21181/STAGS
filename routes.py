@@ -88,7 +88,13 @@ def scores():
     conn.commit()
     conn.close()
 
-    return render_template("score.html", appdata=appdata, gymdata=gymdata)
+    conn = sqlite3.connect('database')
+    cur = conn.cursor()
+    cur.execute("SELECT score_id, score.gymnast_id, gymnast.gymnast_name, apparatus.apparatus_name, escore, dscore FROM score INNER JOIN gymnast ON score.gymnast_id=gymnast.gymnast_id INNER JOIN apparatus ON score.apparatus_id=apparatus.apparatus_id ")
+    scoredata = cur.fetchall()
+    conn.close()
+
+    return render_template("score.html", appdata=appdata, gymdata=gymdata, scoredata=scoredata)
 
 #creating a page to view leaderboards
 @app.route('/leaderboard')
