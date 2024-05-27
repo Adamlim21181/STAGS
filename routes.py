@@ -61,13 +61,6 @@ def scores():
     gymdata = cur.fetchall()
     conn.close()
 
-    #viewing apparatus with their id's
-    conn = sqlite3.connect('database')
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM apparatus")
-    appdata = cur.fetchall()
-    conn.close()
-
     #Adding Scores
     form1 = None
     form2 = None
@@ -113,7 +106,7 @@ def scores():
             conn.commit()
             conn.close()
 
-    return render_template("score.html", appdata=appdata, gymdata=gymdata, scoredata=scoredata)
+    return render_template("score.html", gymdata=gymdata, scoredata=scoredata)
 
 #creating a page to view leaderboards
 @app.route('/leaderboard')

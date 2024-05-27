@@ -22,21 +22,6 @@
     {% endfor %}
 </table>
 
-<!--Creating a table to display apparatus with id-->
-<table>
-    <tr>
-        <th>id</th>
-        <th>Apparatus</th>
-    </tr>
-    {% for row in appdata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-
 <!--Form to input data to add scores to the database-->
 <form>
     <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1" required></p>
@@ -49,8 +34,8 @@
         <option value="5">Pommel</option>
         <option value="6">Floor</option>
     </select>
-    <p>Execution Score: <input type="number" name = "add-escore" placeholder="1" required></p>
-    <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1" required></p>
+    <p>Execution Score: <input type="number" name = "add-escore" placeholder="1"  min = "0" max = "10" required></p>
+    <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1"  min = "0" max = "10" required></p>
     <input type="submit">
 </form>
 
@@ -85,8 +70,8 @@
         <option value="5">Pommel</option>
         <option value="6">Floor</option>
     </select>
-    <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1" required></p>
-    <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1" required></p>
+    <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1"  min = "0" max = "10" required></p>
+    <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1"  min = "0" max = "10" required></p>
     <input type = "submit">
 </form>
 {% endblock %}
