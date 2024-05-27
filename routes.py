@@ -81,18 +81,37 @@ def scores():
         form4 = request.args.get('add-dscore')
 
     #adding the new scores
-    conn = sqlite3.connect('database')
-    cur = conn.cursor()
-    sql = ("INSERT INTO score (gymnast_id, apparatus_id, escore, dscore) VALUES (?,?,?,?)")
-    cur.execute(sql, (form1, form2, form3, form4))
-    conn.commit()
-    conn.close()
+    if form1 is not None and form2 is not None and form3 is not None and form4 is not None:
+        conn = sqlite3.connect('database')
+        cur = conn.cursor()
+        sql = ("INSERT INTO score (gymnast_id, apparatus_id, escore, dscore) VALUES (?,?,?,?)")
+        cur.execute(sql, (form1, form2, form3, form4))
+        conn.commit()
+        conn.close()
 
     conn = sqlite3.connect('database')
     cur = conn.cursor()
     cur.execute("SELECT score_id, score.gymnast_id, gymnast.gymnast_name, apparatus.apparatus_name, escore, dscore FROM score INNER JOIN gymnast ON score.gymnast_id=gymnast.gymnast_id INNER JOIN apparatus ON score.apparatus_id=apparatus.apparatus_id ")
     scoredata = cur.fetchall()
     conn.close()
+
+    newform1 = None
+    newform2 = None
+    newform3 = None
+    newform4 = None
+    if len(request.args) > 0:
+        newform1 = request.args.get('scoreid')
+        newform2 = request.args.get('appid')
+        newform3 = request.args.get('newescore')
+        newform4 = request.args.get('newdscore')
+
+    if newform1 is not None and newform2 is not None and newform3 is not None and newform4 is not None:
+        conn = sqlite3.connect('database')
+        cur = conn.cursor()
+        sql = ("UPDATE score SET apparatus_id = ?, escore = ?, dscore = ? WHERE score_id = ?")
+        cur.execute(sql, (newform2, newform3, newform4, newform1))
+        conn.commit()
+        conn.close()
 
     return render_template("score.html", appdata=appdata, gymdata=gymdata, scoredata=scoredata)
 
