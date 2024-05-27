@@ -40,7 +40,15 @@
 <!--Form to input data to add scores to the database-->
 <form>
     <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1" required></p>
-    <p>Apparatus id: <input type="number" name = "app" placeholder = "1" required></p>
+    <p>Apparatus: <select name = "app" required></p>
+        <option disabled hidden selected>Select</option>
+        <option value="1">High Bar</option>
+        <option value="2">P-bars</option>
+        <option value="3">Vault</option>
+        <option value="4">Rings</option>
+        <option value="5">Pommel</option>
+        <option value="6">Floor</option>
+    </select>
     <p>Execution Score: <input type="number" name = "add-escore" placeholder="1" required></p>
     <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1" required></p>
     <input type="submit">
@@ -66,7 +74,15 @@
 
 <form>
     <p>Score id: <input type ="number" name = "scoreid" placeholder = "1" required></p>
-    <p>Apparatus id: <input type ="number" name = "appid" placeholder = "1" required></p>
+    <p>Apparatus: <select name = "appid" required></p>
+        <option disabled hidden selected>Select</option>
+        <option value="1">High Bar</option>
+        <option value="2">P-bars</option>
+        <option value="3">Vault</option>
+        <option value="4">Rings</option>
+        <option value="5">Pommel</option>
+        <option value="6">Floor</option>
+    </select>
     <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1" required></p>
     <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1" required></p>
     <input type = "submit">
