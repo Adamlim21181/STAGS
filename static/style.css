@@ -1,4 +1,5 @@
 
+/*drop down table styling*/
 .dropdown-content {
     display: none;
     position: absolute;
@@ -9,5 +10,9 @@
     z-index: 1;
   }
   
-  .show {display: block;}
+.show {
+  display: block;
+}
+
+
   

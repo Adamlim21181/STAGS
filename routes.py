@@ -36,6 +36,7 @@ def gymnast():
     #Editing registered gymnasts
     id = None
     name = None
+    error_message = None
     if len(request.args) > 0:
         #getting the registered gymnasts id and new name
         id = request.args.get('id')
@@ -46,9 +47,16 @@ def gymnast():
             sql = ("UPDATE gymnast SET gymnast_name = ? WHERE gymnast_id = ?")
             cur.execute(sql, (name, id))
             conn.commit()
+
+            # Check if ID exists
+            cur.execute("SELECT * FROM gymnast WHERE gymnast_id = ?", (id,))
+            if not cur.fetchone():
+                error_message = "Error: id does not exist."
+
             conn.close()
 
-    return render_template('gymnast.html', regdata=regdata)
+    return render_template('gymnast.html', regdata=regdata, error_message=error_message)
+
 
 #creating a page to add scores
 @app.route('/addscores')
@@ -92,6 +100,7 @@ def scores():
     newform2 = None
     newform3 = None
     newform4 = None
+    msg = None
     if len(request.args) > 0:
         #Getting the data needed from the users input
         newform1 = request.args.get('scoreid')
@@ -104,9 +113,14 @@ def scores():
             sql = ("UPDATE score SET apparatus_id = ?, escore = ?, dscore = ? WHERE score_id = ?")
             cur.execute(sql, (newform2, newform3, newform4, newform1))
             conn.commit()
+            
+            # Check if ID exists
+            cur.execute("SELECT * FROM score WHERE score_id = ?", (newform1,))
+            if not cur.fetchone():
+                msg = "Error: Score id does not exist."
             conn.close()
 
-    return render_template("score.html", gymdata=gymdata, scoredata=scoredata)
+    return render_template("score.html", gymdata=gymdata, scoredata=scoredata, msg=msg)
 
 #creating a page to view leaderboards
 @app.route('/leaderboard')

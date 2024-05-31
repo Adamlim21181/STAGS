@@ -73,5 +73,9 @@
     <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1"  min = "0" max = "10" required></p>
     <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1"  min = "0" max = "10" required></p>
     <input type = "submit">
+    
 </form>
+{% if msg %}
+    <p style="color: red;">{{ msg }}</p>
+{% endif %}
 {% endblock %}

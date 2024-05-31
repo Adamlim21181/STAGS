@@ -30,10 +30,14 @@
 </table>
 
 <!--edit registered gymnasts-->
-<form id = editgymnast>
-    <p> id: <input type="number" name = "id" placeholder="1" required></p>
-    <p> Name: <input type="text" name = "newname" placeholder="john" required></p>
-    <input type="submit" />
+<form id="editgymnast">
+    <p> id: <input type="number" name="id" placeholder="1" required></p>
+    <p> Name: <input type="text" name="newname" placeholder="john" required></p>
+    <input type="submit">
 </form>
+
+{% if error_message %}
+    <p style="color: red;">{{ error_message }}</p>
+{% endif %}
 
 {% endblock %}
