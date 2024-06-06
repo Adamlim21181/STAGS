@@ -1,4 +1,15 @@
 
+body {
+  margin: 0;
+}
+
+.content {
+	margin-left:15%;
+  padding:1px 16px;
+  height:1000px;
+	font-family:'Times New Roman', Times, serif;
+}
+
 /*drop down table styling*/
 .dropdown-content {
     display: none;
@@ -14,5 +25,29 @@
   display: block;
 }
 
+/* Nav bar */
 
-  
+ul {
+  margin: 0;
+  padding: 0;
+  width: 10%;
+  background-color: #e7e7e7;
+  position: fixed;
+  height: 100%;
+  border-right-style: ridge;
+  border-width: 2px;
+  border-color:black;
+}
+
+li a {
+  font-size: large;
+  display: block;
+  color: #000;
+  padding: 20px 16px;
+  text-decoration: none;
+}
+
+ul :hover {
+  background-color: rgb(190, 189, 189);
+}
+

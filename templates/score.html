@@ -3,79 +3,81 @@
 
 {% block content %}
 
+<div class = "content">
+    <h1>score</h1>
 
-<h1>score</h1>
 
-
-<!--Creating a table to display the registerd gymnasts with their id's-->
-<table>
-    <tr>
-        <th>id</th>
-        <th>Name</th>
-    </tr>
-    {% for row in gymdata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
+    <!--Creating a table to display the registerd gymnasts with their id's-->
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+        </tr>
+        {% for row in gymdata %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
 
-<!--Form to input data to add scores to the database-->
-<form>
-    <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1" required></p>
-    <p>Apparatus: <select name = "app" required></p>
-        <option disabled hidden selected>Select</option>
-        <option value="1">High Bar</option>
-        <option value="2">P-bars</option>
-        <option value="3">Vault</option>
-        <option value="4">Rings</option>
-        <option value="5">Pommel</option>
-        <option value="6">Floor</option>
-    </select>
-    <p>Execution Score: <input type="number" name = "add-escore" placeholder="1"  min = "0" max = "10" required></p>
-    <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1"  min = "0" max = "10" required></p>
-    <input type="submit">
-</form>
+    <!--Form to input data to add scores to the database-->
+    <form>
+        <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1" required></p>
+        <p>Apparatus: <select name = "app" required></p>
+            <option disabled hidden selected>Select</option>
+            <option value="1">High Bar</option>
+            <option value="2">P-bars</option>
+            <option value="3">Vault</option>
+            <option value="4">Rings</option>
+            <option value="5">Pommel</option>
+            <option value="6">Floor</option>
+        </select>
+        <p>Execution Score: <input type="number" name = "add-escore" placeholder="1"  min = "0" max = "10" required></p>
+        <p>Difficulty Score: <input type="number" name = "add-dscore" placeholder="1"  min = "0" max = "10" required></p>
+        <input type="submit">
+    </form>
 
-<!--A table to view the registerd scores in the database-->
-<table>
-    <tr>
-        <th>score id</th>
-        <th>gymnast id</th>
-        <th>Name</th>
-        <th>Apparatus</th>
-        <th>E-score</th>    
-        <th>D-score</th>
-    </tr>
-    {% for row in scoredata %}
-    <tr>
-        {% for col in row %}
-        <td>{{ col }}</td>
+    <!--A table to view the registerd scores in the database-->
+    <table>
+        <tr>
+            <th>score id</th>
+            <th>gymnast id</th>
+            <th>Name</th>
+            <th>Apparatus</th>
+            <th>E-score</th>    
+            <th>D-score</th>
+        </tr>
+        {% for row in scoredata %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
 
-<!--Form to edit any scores or change apparatuses in the database-->
-<form>
-    <p>Score id: <input type ="number" name = "scoreid" placeholder = "1" required></p>
-    <p>Apparatus: <select name = "appid" required></p>
-        <option disabled hidden selected>Select</option>
-        <option value="1">High Bar</option>
-        <option value="2">P-bars</option>
-        <option value="3">Vault</option>
-        <option value="4">Rings</option>
-        <option value="5">Pommel</option>
-        <option value="6">Floor</option>
-    </select>
-    <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1"  min = "0" max = "10" required></p>
-    <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1"  min = "0" max = "10" required></p>
-    <input type = "submit">
-    
-</form>
-{% if msg %}
-    <p style="color: red;">{{ msg }}</p>
-{% endif %}
+    <!--Form to edit any scores or change apparatuses in the database-->
+    <form>
+        <p>Score id: <input type ="number" name = "scoreid" placeholder = "1" required></p>
+        <p>Apparatus: <select name = "appid" required></p>
+            <option disabled hidden selected>Select</option>
+            <option value="1">High Bar</option>
+            <option value="2">P-bars</option>
+            <option value="3">Vault</option>
+            <option value="4">Rings</option>
+            <option value="5">Pommel</option>
+            <option value="6">Floor</option>
+        </select>
+        <p>Execution Score: <input type ="number" name = "newescore" placeholder = "1"  min = "0" max = "10" required></p>
+        <p>Difficulty Score: <input type ="number" name = "newdscore" placeholder = "1"  min = "0" max = "10" required></p>
+        <input type = "submit">
+        
+    </form>
+    {% if msg %}
+        <p style="color: red;">{{ msg }}</p>
+    {% endif %}
+</div>
+
 {% endblock %}
