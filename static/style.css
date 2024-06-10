@@ -4,6 +4,9 @@ body {
   background-color: #dadada;
 }
 
+.bold {
+  font-weight: bold;
+}
 .content {
 	margin-left:15%;
   padding:1px 16px;
@@ -12,14 +15,26 @@ body {
 }
 
 /*drop down table styling*/
+.drpbutton {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
 .dropdown-content {
     display: none;
-    position: absolute;
+    position: relative;
     background-color: #f1f1f1;
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    margin: 0;
   }
   
 .show {
@@ -94,5 +109,28 @@ input[type=submit]:hover {
   background-color: #ffffff;
   padding: 20px;
 }
+
+/* tables */
+
+table, td, th {
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+td, th {
+  padding: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tables {
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
 
 

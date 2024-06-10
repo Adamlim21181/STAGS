@@ -4,11 +4,11 @@
 {% block content %}
 
 <div class = "content">
-    <h1>leaderboard</h1>
 
+    <h2>Leaderboard</h2>
     <!--Table to display the all around leaderboard-->
     <div class = "dropdown">
-        <button onclick = "toggleDropdown('allaround')">All Around</button>
+        <button class = "drpbutton" onclick = "toggleDropdown('allaround')">All Around</button>
         <div id="allaround" class = "dropdown-content">
             <table>
                 <tr>
@@ -25,11 +25,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
+   
 
-    <!--Table to display the floor leaderboard-->
-    <div class = "dropdown">
-        <button onclick = "toggleDropdown('floor')">Floor</button>
+        <!--Table to display the floor leaderboard-->
+  
+        <button class = "drpbutton" onclick = "toggleDropdown('floor')">Floor</button>
         <div id="floor" class = "dropdown-content">
             <table>
                 <tr>
@@ -48,11 +48,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
+   
 
-    <!--Table to display the pommel leaderboard-->
-    <div class = "dropdown">
-        <button onclick = "toggleDropdown('pommel')">Pommel</button>
+        <!--Table to display the pommel leaderboard-->
+  
+        <button class = "drpbutton" onclick = "toggleDropdown('pommel')">Pommel</button>
         <div id="pommel" class = "dropdown-content">
             <table>
                 <tr>
@@ -71,11 +71,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
 
-    <!--Table to display the rings leaderboard-->
-    <div class = "dropdown">
-        <button onclick = "toggleDropdown('rings')">Rings</button>
+
+        <!--Table to display the rings leaderboard-->
+
+        <button class = "drpbutton" onclick = "toggleDropdown('rings')">Rings</button>
         <div id="rings" class = "dropdown-content">
             <table>
                 <tr>
@@ -94,11 +94,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
+ 
 
-    <!--Table to display the vault leaderboard-->
-    <div class = "dropdown">
-        <button onclick = "toggleDropdown('vault')">Vault</button>
+        <!--Table to display the vault leaderboard-->
+
+        <button class = "drpbutton" onclick = "toggleDropdown('vault')">Vault</button>
         <div id="vault" class = "dropdown-content">
             <table>
                 <tr>
@@ -117,11 +117,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
+  
 
     <!--Table to display the Parallel bars leaderboard-->
-    <div class = "dropdown">
-        <button onclick = "toggleDropdown('pbars')">P-bars</button>
+  
+        <button class = "drpbutton" onclick = "toggleDropdown('pbars')">P-bars</button>
         <div id = "pbars" class = "dropdown-content">
             <table>
                 <tr>
@@ -140,11 +140,11 @@
                 {% endfor %}
             </table>
         </div>
-    </div>
+
 
     <!--Table to display the high bar leaderboard-->
-    <div class = "dropdown">
-        <button onclick =  "toggleDropdown('highbar')">High bar</button>
+
+        <button class = "drpbutton" onclick =  "toggleDropdown('highbar')">High bar</button>
         <div id = "highbar" class = "dropdown-content">  
             <table>
                 <tr>

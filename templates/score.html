@@ -4,23 +4,27 @@
 {% block content %}
 
 <div class = "content">
-    <h1>score</h1>
 
-
+    <div class="tables">
     <!--Creating a table to display the registerd gymnasts with their id's-->
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-        </tr>
-        {% for row in gymdata %}
-        <tr>
-            {% for col in row %}
-            <td>{{ col }}</td>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+            </tr>
+            {% for row in gymdata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+        </table>
+    </div>
+
+    <p></p>
+    <h2>Registor Scores</h2>
+    <p></p>
 
     <div class="forms">
         <!--Form to input data to add scores to the database-->
@@ -41,24 +45,32 @@
         </form>
     </div>
 
+    <p></p>
+    <p></p>
     <!--A table to view the registerd scores in the database-->
-    <table>
-        <tr>
-            <th>score id</th>
-            <th>gymnast id</th>
-            <th>Name</th>
-            <th>Apparatus</th>
-            <th>E-score</th>    
-            <th>D-score</th>
-        </tr>
-        {% for row in scoredata %}
-        <tr>
-            {% for col in row %}
-            <td>{{ col }}</td>
+    <div class="tables">
+        <table>
+            <tr>
+                <th>score id</th>
+                <th>gymnast id</th>
+                <th>Name</th>
+                <th>Apparatus</th>
+                <th>E-score</th>    
+                <th>D-score</th>
+            </tr>
+            {% for row in scoredata %}
+            <tr>
+                {% for col in row %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+        </table>
+    </div>
+
+    <p></p>
+    <h2>Edit Registered Scores</h2>
+    <p></p>
 
     <div class="forms">
         <!--Form to edit any scores or change apparatuses in the database-->
@@ -81,6 +93,11 @@
         {% if msg %}
             <p style="color: red;">{{ msg }}</p>
         {% endif %}
+
+        <p> </p>
+        <p> </p>
+        <p> </p>
+
     </div>
 
 </div>
