@@ -6,39 +6,48 @@
 <div class = "content">
     <h1>gymnast</h1>
 
-    <!--Form to add gymnasts to the database-->
-    <form id = registor>
-        <p> Name: <input type="text" name = "registorname" placeholder="john" required></p>
-        <input type="submit" />
-    </form>
+    <div class = "forms">
+        <!--Form to add gymnasts to the database-->
+        <form id = registor>
+            <p> Name: <input type="text" name = "registorname" placeholder="john" required></p>
+            <input type="submit" />
+        </form>
+    </div>
 
-    <p> </p>
+    <p> <p>
 
     <!--view registerd gymnasts-->
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Name</th>
-        </tr>
-        {% for row in regdata %}
-        <tr>
-            {% for col in row  %}
-            <td>{{ col }}</td>
+    <div class = "tables">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+            </tr>
+            {% for row in regdata %}
+            <tr>
+                {% for col in row  %}
+                <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+        </table>
+    </div>
 
-    <!--edit registered gymnasts-->
-    <form id="editgymnast">
-        <p> id: <input type="number" name="id" placeholder="1" required></p>
-        <p> Name: <input type="text" name="newname" placeholder="john" required></p>
-        <input type="submit">
-    </form>
+    <p></p>
 
-    {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-    {% endif %}
+    <div class = "forms">
+        <!--edit registered gymnasts-->
+        <form id="editgymnast">
+            <p> id: <input type="number" name="id" placeholder="1" required></p>
+            <p> Name: <input type="text" name="newname" placeholder="john" required></p>
+            <input type="submit">
+        </form>
+
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+    
 </div>
 
 {% endblock %}

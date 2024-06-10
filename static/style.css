@@ -1,6 +1,7 @@
 
 body {
   margin: 0;
+  background-color: #dadada;
 }
 
 .content {
@@ -31,7 +32,7 @@ ul {
   margin: 0;
   padding: 0;
   width: 10%;
-  background-color: #e7e7e7;
+  background-color: #ffffff;
   position: fixed;
   height: 100%;
   border-right-style: ridge;
@@ -50,4 +51,43 @@ li a {
 ul :hover {
   background-color: rgb(190, 189, 189);
 }
+
+/* Forms */
+
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #b8b8b8;
+}
+  
+
 
