@@ -33,12 +33,24 @@
             </tr>
             {% for row in regdata %}
             <tr>
-                {% for col in row  %}
-                <td>{{ col }}</td>
+                {% for i in row  %}
+                <td>{{ i }}</td>
                 {% endfor %}
+            </tr>
+            <tr>
             </tr>
             {% endfor %}
         </table>
+
+        <form id="delete">
+            <p> id: <input type="number" name="deleteid" placeholder="1" required></p>
+            <input type="submit" value="Delete">
+        </form>
+
+        {% if delete_error %}
+            <p style="color: red;">{{ delete_error }}</p>
+        {% endif %}
+
     </div>
 
     <p></p>

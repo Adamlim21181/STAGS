@@ -72,6 +72,16 @@
             </tr>
             {% endfor %}
         </table>
+
+        <form id="delete">
+            <p> Score id: <input type="number" name="deleteid" placeholder="1" required></p>
+            <input type="submit" value="Delete">
+        </form>
+
+        {% if delete_error %}
+            <p style="color: red;">{{ delete_error }}</p>
+        {% endif %}
+
     </div>
 
     <p></p>

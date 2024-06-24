@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import sqlite3
+import sqlite3, time
 
 
 app = Flask(__name__)
@@ -26,13 +26,33 @@ def gymnast():
             conn.commit()
             conn.close()
 
-    #viewing registerd gymnasts
+    #viewing registered gymnasts
     conn = sqlite3.connect('database')
     cur = conn.cursor()
     cur.execute("SELECT * FROM gymnast")
     regdata = cur.fetchall()
     conn.close()
 
+    #delete registered gymnasts
+    delete = None
+    delete_error = None
+    if len(request.args) > 0:
+        delete = request.args.get('deleteid')
+        if delete is not None:
+            conn = sqlite3.connect('database')
+            cur = conn.cursor()
+
+            # Check if ID exists
+            cur.execute("SELECT * FROM gymnast WHERE gymnast_id = ?", (delete,))
+            if not cur.fetchone():
+                delete_error = "Error: id does not exist."
+
+            time.sleep(1)
+            sql = ("DELETE FROM gymnast WHERE gymnast_id = ?")
+            cur.execute(sql, (delete,))
+            conn.commit()
+            conn.close()
+    
     #Editing registered gymnasts
     id = None
     name = None
@@ -53,9 +73,10 @@ def gymnast():
             if not cur.fetchone():
                 error_message = "Error: id does not exist."
 
+
             conn.close()
 
-    return render_template('gymnast.html', regdata=regdata, error_message=error_message)
+    return render_template('gymnast.html', regdata=regdata, error_message=error_message, delete_error=delete_error)
 
 
 #creating a page to add scores
@@ -95,6 +116,25 @@ def scores():
     scoredata = cur.fetchall()
     conn.close()
 
+    #delete registered scores
+    delete = None
+    delete_error = None
+    if len(request.args) > 0:
+        delete = request.args.get('deleteid')
+        if delete is not None:
+            conn = sqlite3.connect('database')
+            cur = conn.cursor()
+            # Check if ID exists
+            cur.execute("SELECT * FROM score WHERE score_id = ?", (delete,))
+            if not cur.fetchone():
+                delete_error = "Error: id does not exist."
+            
+            time.sleep(1)
+            sql = ("DELETE FROM score WHERE score_id = ?")
+            cur.execute(sql, (delete,))
+            conn.commit()
+            conn.close()
+
     #Editing the registered scores
     newform1 = None
     newform2 = None
@@ -120,7 +160,7 @@ def scores():
                 msg = "Error: Score id does not exist."
             conn.close()
 
-    return render_template("score.html", gymdata=gymdata, scoredata=scoredata, msg=msg)
+    return render_template("score.html", gymdata=gymdata, scoredata=scoredata, msg=msg, delete_error=delete_error)
 
 #creating a page to view leaderboards
 @app.route('/leaderboard')
@@ -175,7 +215,17 @@ def leaderboard():
     highbardata = cur.fetchall()
     conn.close()
 
+    
+
     return render_template("leaderboard.html", overalldata=overalldata, floordata=floordata, pommeldata=pommeldata, ringsdata=ringsdata, vaultdata=vaultdata, pbardata=pbardata, highbardata=highbardata)
+
+@app.route('/scorelead/<int:id>')
+def level_leaderboard(id):
+    conn = sqlite3.connect('database')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM score WHERE gymnast_id = ?", (id,))
+    score = cur.fetchall()
+    return render_template("scorelead.html", score=score )
 
 if __name__ == "__main__":
     app.run(debug=True)
