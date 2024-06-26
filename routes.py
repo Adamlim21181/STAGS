@@ -219,6 +219,16 @@ def leaderboard():
 
     return render_template("leaderboard.html", overalldata=overalldata, floordata=floordata, pommeldata=pommeldata, ringsdata=ringsdata, vaultdata=vaultdata, pbardata=pbardata, highbardata=highbardata)
 
+@app.route('/scoredata')
+def scoredata():
+    conn = sqlite3.connect('database')
+    cur = conn.cursor()
+    cur.execute("SELECT  * FROM score ORDER BY gymnast_id")
+    scores = cur.fetchall()
+    conn.close() 
+    
+    return render_template("scoredata.html", scores=scores)
+
 @app.route('/scorelead/<int:id>')
 def level_leaderboard(id):
     conn = sqlite3.connect('database')
