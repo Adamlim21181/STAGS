@@ -14,6 +14,18 @@
         <!--Form to add gymnasts to the database-->
         <form id = registor>
             <p> Name: <input type="text" name = "registorname" placeholder="john" required></p>
+            <p> Level: <select name="registorlevel" required></p>
+                <option disabled hidden selected>Select</option>
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="9">Level 9</option>
+            </select>
             <input type="submit" />
         </form>
     </div>
@@ -25,11 +37,12 @@
     <div class = "tables">
         <table>
             <tr>
-                <th id="tableheader" colspan="2">Registered Gymnasts</th>
+                <th id="tableheader" colspan="3">Registered Gymnasts</th>
             </tr>
             <tr>
                 <th>id</th>
                 <th>Name</th>
+                <th>Level</th>
             </tr>
             {% for row in regdata %}
             <tr>
@@ -62,6 +75,20 @@
         <form id="editgymnast">
             <p> id: <input type="number" name="id" placeholder="1" required></p>
             <p> Name: <input type="text" name="newname" placeholder="john" required></p>
+            <p> Level: <select name="newlevel" required></p>
+                <option disabled hidden selected>Select</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option>
+                <option value="Level 5">Level 5</option>
+                <option value="Level 6">Level 6</option>
+                <option value="Level 7">Level 7</option>
+                <option value="Level 8">Level 8</option>
+                <option value="Level 9">Level 9</option>
+                <option value="Junior International ">Junior International</option>
+                <option value="Senior International">Senior International</option>
+            </select>
             <input type="submit">
         </form>
 

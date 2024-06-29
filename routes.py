@@ -14,15 +14,17 @@ def homepage():
 def gymnast():
 
     #adding gymnasts to the database
-    form = None
+    form1 = None
+    form2 = None
     if len(request.args) > 0:
         #getting the gymnast name from the websites input
-        form = request.args.get('registorname')
-        if form is not None:
+        form1 = request.args.get('registorname')
+        form2 = request.args.get('registorlevel')
+        if form1 is not None and form2 is not None:
             conn = sqlite3.connect('database')
             cur = conn.cursor()
-            sql = ("INSERT INTO gymnast (gymnast_name) VALUES(?)")
-            cur.execute(sql, (form,))
+            sql = ("INSERT INTO gymnast (gymnast_name, level) VALUES(?,?)")
+            cur.execute(sql, (form1, form2))
             conn.commit()
             conn.close()
 
@@ -56,16 +58,18 @@ def gymnast():
     #Editing registered gymnasts
     id = None
     name = None
+    level = None
     error_message = None
     if len(request.args) > 0:
         #getting the registered gymnasts id and new name
         id = request.args.get('id')
         name = request.args.get('newname')
-        if id is not None and name is not None: 
+        level = request.args.get('newlevel')
+        if id is not None and name is not None and level is not None: 
             conn = sqlite3.connect('database')
             cur = conn.cursor()
-            sql = ("UPDATE gymnast SET gymnast_name = ? WHERE gymnast_id = ?")
-            cur.execute(sql, (name, id))
+            sql = ("UPDATE gymnast SET gymnast_name = ?, level = ? WHERE gymnast_id = ?")
+            cur.execute(sql, (name, level, id))
             conn.commit()
 
             # Check if ID exists
@@ -223,19 +227,20 @@ def leaderboard():
 def scoredata():
     conn = sqlite3.connect('database')
     cur = conn.cursor()
-    cur.execute("SELECT  * FROM score ORDER BY gymnast_id")
-    scores = cur.fetchall()
+    cur.execute("SELECT score.score_id, score.gymnast_id, gymnast.level AS gymnast_level, score.apparatus_id, score.escore, score.escore FROM score JOIN gymnast ON score.gymnast_id = gymnast.gymnast_id ORDER BY gymnast.level;")
+    levels = cur.fetchall()
     conn.close() 
     
-    return render_template("scoredata.html", scores=scores)
+    return render_template("scoredata.html", levels=levels)
 
-@app.route('/scorelead/<int:id>')
-def level_leaderboard(id):
+@app.route('/scorelead/<level>')
+def level_leaderboard(level):
     conn = sqlite3.connect('database')
     cur = conn.cursor()
-    cur.execute("SELECT * FROM score WHERE gymnast_id = ?", (id,))
-    score = cur.fetchall()
-    return render_template("scorelead.html", score=score )
+    cur.execute("SELECT score.* FROM score JOIN gymnast ON score.gymnast_id = gymnast.gymnast_id WHERE gymnast.level = ?", (level,))
+    levels = cur.fetchall()  
+    return render_template("scorelead.html", levels=levels )
+
 
 if __name__ == "__main__":
     app.run(debug=True)

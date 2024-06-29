@@ -1,6 +1,6 @@
 
-{% for score in scores %}
+{% for level in levels %}
     <p>
-        <a href="/scorelead/{{score[0]}}">{{ score[1] }}</a>
+        <a href="/scorelead/{{level[2]}}">View scores for {{ level[2] }} level</a>
     </p>
 {% endfor %}
