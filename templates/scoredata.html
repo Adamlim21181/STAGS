@@ -1,6 +1,16 @@
+{% extends 'layout.html' %}
 
-{% for level in levels %}
-    <p>
-        <a href="/scorelead/{{level[2]}}">View scores for {{ level[2] }} level</a>
-    </p>
-{% endfor %}
+
+{% block content %}
+
+    <div class="content">
+        <div id="codelinks">
+            {% for level in levels %}
+                <p>
+                    <a id="leadlink" href="/scorelead/{{level[2]}}">View scores for level {{ level[2] }}</a>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
