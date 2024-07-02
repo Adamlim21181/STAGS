@@ -175,13 +175,13 @@ def scores():
 def scoredata():
     conn = sqlite3.connect('database')
     cur = conn.cursor()
-    cur.execute("SELECT * FROM gymnast ORDER BY level;")
+    cur.execute("SELECT * FROM ( SELECT *, ROW_NUMBER() OVER(PARTITION BY level ORDER BY gymnast_id) AS num FROM gymnast ) AS ranked_gymnasts WHERE num = 1 ORDER BY level;")
     levels = cur.fetchall()
     conn.close() 
     
     return render_template("scoredata.html", levels=levels)
 
-#get the scores depending on the level of the gymnasts to display on a leaderboard.
+#get the levels in decending order
 @app.route('/scorelead/<level>')
 def level_leaderboard(level):
     conn = sqlite3.connect('database')
