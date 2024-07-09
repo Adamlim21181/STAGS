@@ -21,7 +21,7 @@ def gymnast():
         form1 = request.args.get('registorname')
         form2 = request.args.get('registorlevel')
         if form1 is not None and form2 is not None:
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
             sql = ("INSERT INTO gymnast (gymnast_name, level) VALUES(?,?)")
             cur.execute(sql, (form1, form2))
@@ -29,7 +29,7 @@ def gymnast():
             conn.close()
 
     #viewing registered gymnasts
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT * FROM gymnast")
     regdata = cur.fetchall()
@@ -41,7 +41,7 @@ def gymnast():
     if len(request.args) > 0:
         delete = request.args.get('deleteid')
         if delete is not None:
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
 
             # Check if ID exists
@@ -66,7 +66,7 @@ def gymnast():
         name = request.args.get('newname')
         level = request.args.get('newlevel')
         if id is not None and name is not None and level is not None: 
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
             sql = ("UPDATE gymnast SET gymnast_name = ?, level = ? WHERE gymnast_id = ?")
             cur.execute(sql, (name, level, id))
@@ -88,9 +88,9 @@ def gymnast():
 def scores():
 
     #viewing gymnasts that are in the database
-    conn = sqlite3.connect('database')  
+    conn = sqlite3.connect('database.db')  
     cur = conn.cursor()
-    cur.execute("SELECT * FROM gymnast")
+    cur.execute("SELECT gymnast.gymnast_id, gymnast.gymnast_name FROM gymnast")
     gymdata = cur.fetchall()
     conn.close()
 
@@ -114,7 +114,7 @@ def scores():
             conn.close()
 
     #Viewing the registered scores
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score_id, score.gymnast_id, gymnast.gymnast_name, apparatus.apparatus_name, escore, dscore FROM score INNER JOIN gymnast ON score.gymnast_id=gymnast.gymnast_id INNER JOIN apparatus ON score.apparatus_id=apparatus.apparatus_id ")
     scoredata = cur.fetchall()
@@ -126,7 +126,7 @@ def scores():
     if len(request.args) > 0:
         delete = request.args.get('deleteid')
         if delete is not None:
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
             # Check if ID exists
             cur.execute("SELECT * FROM score WHERE score_id = ?", (delete,))
@@ -173,7 +173,7 @@ def scores():
 #get and order the gymnasts levels in descending order
 @app.route('/scoredata')
 def scoredata():
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT * FROM ( SELECT *, ROW_NUMBER() OVER(PARTITION BY level ORDER BY gymnast_id) AS num FROM gymnast ) AS ranked_gymnasts WHERE num = 1 ORDER BY level;")
     levels = cur.fetchall()
@@ -184,55 +184,55 @@ def scoredata():
 #get the levels in decending order
 @app.route('/scorelead/<level>')
 def level_leaderboard(level):
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.* FROM score JOIN gymnast ON score.gymnast_id = gymnast.gymnast_id WHERE gymnast.level = ?", (level,))
     levels = cur.fetchall()  
 
      # viewing overall leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, SUM(score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE gymnast.level = ? GROUP BY score.gymnast_id, gymnast.gymnast_name ORDER BY total DESC  ", (level,))
     overalldata = cur.fetchall()
     conn.close()
     
     #viewing floor leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore,score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 6 and gymnast.level = ? ORDER BY total DESC ", (level,))
     floordata = cur.fetchall()
     conn.close()
 
     #viewing pommel leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore,score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 5 and gymnast.level = ? ORDER BY total DESC ", (level,))
     pommeldata = cur.fetchall()
     conn.close()
 
     #viewing rings leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore,score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 4 and gymnast.level = ? ORDER BY total DESC ", (level,))
     ringsdata = cur.fetchall()
     conn.close()
 
     #viewing vault leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore, score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 3 and gymnast.level = ? ORDER BY total DESC ", (level,))
     vaultdata = cur.fetchall()
     conn.close()
 
     #viewing parellel bar leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore,score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 2 and gymnast.level = ? ORDER BY total DESC ", (level,))
     pbardata = cur.fetchall()
     conn.close()
 
     #viewing high bars leaderboard
-    conn = sqlite3.connect('database')
+    conn = sqlite3.connect('database.db')
     cur = conn.cursor()
     cur.execute("SELECT score.gymnast_id, gymnast.gymnast_name, score.dscore, score.escore, (score.dscore + score.escore) AS total FROM gymnast JOIN score ON score.gymnast_id = gymnast.gymnast_id JOIN apparatus ON score.apparatus_id = apparatus.apparatus_id WHERE apparatus.apparatus_id = 1 and gymnast.level = ? ORDER BY total DESC ", (level,))
     highbardata = cur.fetchall()

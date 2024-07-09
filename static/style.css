@@ -2,7 +2,7 @@
 body, html {
   height: 100%;
   margin: 0;
-  background-color: #dadada;
+  background-color: rgb(231, 231, 232);
 }
 
 .bold {
@@ -15,11 +15,12 @@ body, html {
   margin-right: 5%;
   padding: 1px 16px;
 	font-family:'Times New Roman', Times, serif;
+  color: #000000;
 }
 
 /* Home Page */
 #step1, #step2, #step3, #step4 {
-  background-color: #ffffff;
+  background-color: #ffffff ; /*this*/
   padding: 12px 20px;
   margin: 8px 0;  width: 100%;
   text-align: center;
@@ -41,7 +42,7 @@ body, html {
 .dropdown-content {
     display: none;
     position: relative;
-    background-color: #f1f1f1;
+    background-color: #ffffff; /*this*/
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -59,7 +60,7 @@ ul {
   margin: 0;
   padding: 0;
   width: 10%;
-  background-color: #ffffff;
+  background-color: #ffffff;  /*this*/
   position: fixed;
   height: 100%;
   border-right-style: ridge;
@@ -70,7 +71,7 @@ ul {
 li a {
   font-size: 120%;
   display: block;
-  color: #000;
+  color: #000000;   /**/
   padding: 20px 16px;
   text-decoration: none;
 }
@@ -86,7 +87,7 @@ input[type=number] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #000000;
+  border: 1px solid #000000;  
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -96,7 +97,7 @@ input[type=text], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #000000;
+  border: 1px solid #000000; 
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -108,6 +109,7 @@ input[type=submit] {
   display: inline-block;
   border: 1px solid #ffffff;
   border-radius: 5px;
+  background-color: rgb(231, 231, 232);
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -118,8 +120,9 @@ input[type=submit]:hover {
 
 .forms {
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #ffffff;      /*this*/
   padding: 20px;
+  margin-top: 3%;
 }
 
 /* tables */
@@ -140,8 +143,12 @@ table {
 
 .tables {
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: #ffffff;  /*this*/
   padding: 20px;
+  overflow-y: scroll;
+  position: sticky;
+  height: 300px;
+  margin-top: 3%;
 }
 
 #tableheader {
@@ -150,14 +157,14 @@ table {
 
 /* leaderboard links */
 #codelinks {
-  background-color: #ffffff;
+  background-color: #ffffff;  /*this*/
   border-radius: 5px;
   padding: 1px 10px;
 }
 
 #leadlink {
   text-decoration: none;
-  color: #000;
+  color: #000000; /**/
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -166,11 +173,15 @@ table {
   border-radius: 5px;
   box-sizing: border-box;
   cursor: pointer;
-  background-color: rgb(229, 227, 227);
+  background-color: rgb(231, 231, 232); /*this*/
 }
 
 #leadlink:hover{
   background-color: rgb(190, 189, 189);
+}
+
+.drpbutton {
+  background-color: #ffffff;
 }
 
 /* Footer */
@@ -184,7 +195,7 @@ table {
 
 .footer-links a {
   text-decoration: none;
-  color: #000;
+  color: #000000; /**/
   padding: 10px;
 }
 

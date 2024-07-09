@@ -12,7 +12,7 @@
                 <th id="tableheader" colspan="2">Registered Gymnasts</th>
             </tr>
             <tr>
-                <th>id</th>
+                <th>ID</th>
                 <th>Name</th>
             </tr>
             {% for row in gymdata %}
@@ -25,14 +25,11 @@
         </table>
     </div>
 
-    <p></p>
-    <h2>Registor Scores</h2>
-    <p></p>
-
     <div class="forms">
+        <h3>Registor Scores</h3>
         <!--Form to input data to add scores to the database-->
         <form>
-            <p>Gymnast id: <input type="number" name = "addgymnastid" placeholder="1" required></p>
+            <p>Gymnast ID: <input type="number" name = "addgymnastid" placeholder="1" required></p>
             <p>Apparatus: <select name = "app" required></p>
                 <option value="" disabled hidden selected>Select</option>
                 <option value="1">High Bar</option>
@@ -48,8 +45,6 @@
         </form>
     </div>
 
-    <p></p>
-    <p></p>
     <!--A table to view the registerd scores in the database-->
     <div class="tables">
         <table>
@@ -57,8 +52,8 @@
                 <th id="tableheader" colspan="6">Registered Scores</th>
             </tr>
             <tr>
-                <th>score id</th>
-                <th>gymnast id</th>
+                <th>Score ID</th>
+                <th>Gymnast ID</th>
                 <th>Name</th>
                 <th>Apparatus</th>
                 <th>E-score</th>    
@@ -73,25 +68,25 @@
             {% endfor %}
         </table>
 
-        <form id="delete">
-            <p> Score id: <input type="number" name="deleteid" placeholder="1" required></p>
-            <input type="submit" value="Delete">
-        </form>
-
         {% if delete_error %}
             <p style="color: red;">{{ delete_error }}</p>
         {% endif %}
 
     </div>
 
-    <p></p>
-    <h2>Edit Registered Scores</h2>
-    <p></p>
-
     <div class="forms">
+        <h3>Delete</h3>
+        <form id="delete">
+            <p> Score ID: <input type="number" name="deleteid" placeholder="1" required></p>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+
+    <div class="forms">  
+        <h3>Edit Registered Scores</h3>
         <!--Form to edit any scores or change apparatuses in the database-->
         <form>
-            <p>Score id: <input type ="number" name = "scoreid" placeholder = "1" required></p>
+            <p>Score ID: <input type ="number" name = "scoreid" placeholder = "1" required></p>
             <p>Apparatus: <select name = "appid" required></p>
                 <option value="" disabled hidden selected>Select</option>
                 <option value="1">High Bar</option>
@@ -110,9 +105,7 @@
             <p style="color: red;">{{ msg }}</p>
         {% endif %}
     </div>
-    <p></p>
-    <p></p>
-    <p></p>
+
 </div>
 
 {% endblock %}
