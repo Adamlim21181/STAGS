@@ -90,7 +90,7 @@ def scores():
     #viewing gymnasts that are in the database
     conn = sqlite3.connect('database.db')  
     cur = conn.cursor()
-    cur.execute("SELECT gymnast.gymnast_id, gymnast.gymnast_name FROM gymnast")
+    cur.execute("SELECT * FROM gymnast")
     gymdata = cur.fetchall()
     conn.close()
 
@@ -106,7 +106,7 @@ def scores():
         form3 = request.args.get('add-escore')
         form4 = request.args.get('add-dscore')
         if form1 is not None and form2 is not None and form3 is not None and form4 is not None:
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
             sql = ("INSERT INTO score (gymnast_id, apparatus_id, escore, dscore) VALUES (?,?,?,?)")
             cur.execute(sql, (form1, form2, form3, form4))
@@ -152,7 +152,7 @@ def scores():
         newform3 = request.args.get('newescore')
         newform4 = request.args.get('newdscore')
         if newform1 is not None and newform2 is not None and newform3 is not None and newform4 is not None:
-            conn = sqlite3.connect('database')
+            conn = sqlite3.connect('database.db')
             cur = conn.cursor()
             sql = ("UPDATE score SET apparatus_id = ?, escore = ?, dscore = ? WHERE score_id = ?")
             cur.execute(sql, (newform2, newform3, newform4, newform1))
