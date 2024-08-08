@@ -1,35 +1,31 @@
 {% extends 'layout.html' %}
-
-
 {% block content %}
-    
-
 <div class = "content">
-
     <div class = "forms">
-        <h3>Registor Gymnast</h3>
+        <h3>Register Gymnast</h3>
         <!--Form to add gymnasts to the database-->
         <form id = registor>
-            <p> Name: <input type="text" name = "registorname" placeholder="john" required></p>
-            <p> Level: <select name="registorlevel" required></p>
-                <option value="" disabled selected hidden>Select</option>
-                <option value="1">Level 1</option>
-                <option value="2">Level 2</option>
-                <option value="3">Level 3</option>
-                <option value="4">Level 4</option>
-                <option value="5">Level 5</option>
-                <option value="6">Level 6</option>
-                <option value="7">Level 7</option>
-                <option value="8">Level 8</option>
-                <option value="9">Level 9</option>
+            <p> Name: <input type="text" name = "registorname" required></p>
+            <p>
+                Level: 
+                <select name="registorlevel" required>
+            </p>
+            <option value="" disabled selected hidden>Select</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
+            <option value="5">Level 5</option>
+            <option value="6">Level 6</option>
+            <option value="7">Level 7</option>
+            <option value="8">Level 8</option>
+            <option value="9">Level 9</option>
             </select>
             <input type="submit" />
         </form>
     </div>
-
     <p></p>
     <p></p>
-
     <!--view registerd gymnasts-->
     <div class = "tables">
         <table>
@@ -51,55 +47,48 @@
             </tr>
             {% endfor %}
         </table>
-
         {% if delete_error %}
-            <p style="color: red;">{{ delete_error }}</p>
+        <p style="color: red;">{{ delete_error }}</p>
         {% endif %}
-
     </div>
-
     <p></p>
-    
     <div class="forms">
-        <h3>Delete</h2>
+        <h3>
+        Delete</h2>
         <form id="delete">
-            <p> ID: <input type="number" name="deleteid" placeholder="1" required></p>
+            <p> ID: <input type="number" name="deleteid" required></p>
             <input type="submit" value="Delete">
         </form>
     </div>
-
-    <div class = "forms"> 
+    <div class = "forms">
         <h3>Edit Registered Gymnasts</h3>
         <!--edit registered gymnasts-->
         <form id="editgymnast">
-            <p> ID: <input type="number" name="id" placeholder="1" required></p>
-            <p> Name: <input type="text" name="newname" placeholder="john" required></p>
-            <p> Level: <select name="newlevel" required></p>
-                <option value="" disabled hidden selected>Select</option>
-                <option value="Level 1">Level 1</option>
-                <option value="Level 2">Level 2</option>
-                <option value="Level 3">Level 3</option>
-                <option value="Level 4">Level 4</option>
-                <option value="Level 5">Level 5</option>
-                <option value="Level 6">Level 6</option>
-                <option value="Level 7">Level 7</option>
-                <option value="Level 8">Level 8</option>
-                <option value="Level 9">Level 9</option>
-                <option value="Junior International ">Junior International</option>
-                <option value="Senior International">Senior International</option>
+            <p> ID: <input type="number" name="id" required></p>
+            <p> Name: <input type="text" name="newname" required></p>
+            <p>
+                Level: 
+                <select name="newlevel" required>
+            </p>
+            <option value="" disabled hidden selected>Select</option>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
+            <option value="5">Level 5</option>
+            <option value="6">Level 6</option>
+            <option value="7">Level 7</option>
+            <option value="8">Level 8</option>
+            <option value="9">Level 9</option>
             </select>
             <input type="submit">
         </form>
-
         {% if error_message %}
-            <p style="color: red;">{{ error_message }}</p>
+        <p style="color: red;">{{ error_message }}</p>
         {% endif %}
     </div>
-
     <p></p>
     <p></p>
     <p></p>
-    
 </div>
-
 {% endblock %}

@@ -1,23 +1,25 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="content">
-
-    <h2 id="leadtitle">All Around</h2>
-
+    <h2 id="leadtitle">
+        {{ apparatus_name }}
+    </h2>
     <div class="appheader">
         {% for app in apps %}
             <a class="applinks" href="/apparatuslead/{{ level }}/{{ app[0] }}">{{ app[1] }}</a>
         {% endfor %}
     </div>
-    
+
     <div class="leadtable">
         <table>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Total Score</th>
+                <th>Difficulty</th>
+                <th>Execution</th>
+                <th>Total</th>
             </tr>
-            {% for row in overalldata %}
+            {% for row in data %}
             <tr>
                 {% for col in row %}
                 <td>{{ col }}</td>
@@ -25,5 +27,7 @@
             </tr>
             {% endfor %}
         </table>
+    </div>
 </div>
 {% endblock %}
+
