@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class = "content">
+
+<div class="content">
+
+    <!-- Table to view the registered gymnasts -->
     <div class="tables">
-        <!--Creating a table to display the registerd gymnasts with their id's-->
         <table>
             <tr>
                 <th id="tableheader" colspan="3">Registered Gymnasts</th>
@@ -12,6 +14,7 @@
                 <th>Name</th>
                 <th>Level</th>
             </tr>
+            <!-- Loop through 'gymdata' to fill the table with registered gymnasts -->
             {% for row in gymdata %}
             <tr>
                 {% for col in row %}
@@ -21,29 +24,36 @@
             {% endfor %}
         </table>
     </div>
+
+    <!-- Form to add scores to the database -->
     <div class="forms">
-        <h3>Registor Scores</h3>
-        <!--Form to input data to add scores to the database-->
+        <h3>Register Scores</h3>
         <form>
-            <p>Gymnast ID: <input type="number" name = "addgymnastid"required></p>
+            <p>Gymnast ID: <input type="number" name="addgymnastid" required></p>
             <p>
                 Apparatus: 
-                <select name = "app" required>
+                <select name="app" required>
             </p>
+            <!-- Dropdown options for apparatus -->
             <option value="" disabled hidden selected>Select</option>
-            <option value="1">High Bar</option>
-            <option value="2">P-bars</option>
-            <option value="3">Vault</option>
-            <option value="4">Rings</option>
-            <option value="5">Pommel</option>
-            <option value="6">Floor</option>
+            <option value="1">Floor</option>
+            <option value="2">Pommel</option>
+            <option value="3">Rings</option>
+            <option value="4">Vault</option>
+            <option value="5">P-bars</option>
+            <option value="6">High Bar</option>
             </select>
-            <p>Execution Score: <input type="number" name = "add-escore" min = "0" max = "10" step="0.01" required></p>
-            <p>Difficulty Score: <input type="number" name = "add-dscore" min = "0" max = "10" step="0.01" required></p>
+            <p>Execution Score: <input type="number" name="add-escore" min="0" max="10" step="0.01" required></p>
+            <p>Difficulty Score: <input type="number" name="add-dscore" min="0" max="10" step="0.01" required></p>
             <input type="submit">
         </form>
+        <!-- Display error message -->
+        {% if error_msg %}
+        <p style="color: red;">{{ error_msg }}</p>
+        {% endif %}
     </div>
-    <!--A table to view the registerd scores in the database-->
+
+    <!-- Table to view the registered scores -->
     <div class="tables">
         <table>
             <tr>
@@ -54,9 +64,10 @@
                 <th>Gymnast ID</th>
                 <th>Name</th>
                 <th>Apparatus</th>
-                <th>E-score</th>
-                <th>D-score</th>
+                <th>Execution</th>
+                <th>Difficulty</th>
             </tr>
+            <!-- Loop through 'scoredata' to fill the table with registered scores -->
             {% for row in scoredata %}
             <tr>
                 {% for col in row %}
@@ -65,41 +76,48 @@
             </tr>
             {% endfor %}
         </table>
+        <!-- Display error message -->
         {% if delete_error %}
         <p style="color: red;">{{ delete_error }}</p>
         {% endif %}
     </div>
+
+    <!-- Form to delete a score -->
     <div class="forms">
         <h3>Delete</h3>
         <form id="delete">
-            <p> Score ID: <input type="number" name="deleteid" required></p>
+            <p>Score ID: <input type="number" name="deleteid" required></p>
             <input type="submit" value="Delete">
         </form>
     </div>
+
+    <!-- Form to edit registered scores -->
     <div class="forms">
         <h3>Edit Registered Scores</h3>
-        <!--Form to edit any scores or change apparatuses in the database-->
         <form>
-            <p>Score ID: <input type ="number" name = "scoreid" required></p>
+            <p>Score ID: <input type="number" name="scoreid" required></p>
             <p>
                 Apparatus: 
-                <select name = "appid" required>
+                <select name="appid" required>
             </p>
+            <!-- Dropdown options for apparatus -->
             <option value="" disabled hidden selected>Select</option>
-            <option value="1">High Bar</option>
-            <option value="2">P-bars</option>
-            <option value="3">Vault</option>
-            <option value="4">Rings</option>
-            <option value="5">Pommel</option>
-            <option value="6">Floor</option>
+            <option value="1">Floor</option>
+            <option value="2">Pommel</option>
+            <option value="3">Rings</option>
+            <option value="4">Vault</option>
+            <option value="5">P-bars</option>
+            <option value="6">High Bar</option>
             </select>
-            <p>Execution Score: <input type ="number" name = "newescore" min = "0" max = "10" step="0.01" required></p>
-            <p>Difficulty Score: <input type ="number" name = "newdscore" min = "0" max = "10" step="0.01" required></p>
-            <input type = "submit">
+            <p>Execution Score: <input type="number" name="newescore" min="0" max="10" step="0.01" required></p>
+            <p>Difficulty Score: <input type="number" name="newdscore" min="0" max="10" step="0.01" required></p>
+            <input type="submit">
         </form>
+        <!-- Display error message -->
         {% if msg %}
         <p style="color: red;">{{ msg }}</p>
         {% endif %}
     </div>
+
 </div>
 {% endblock %}

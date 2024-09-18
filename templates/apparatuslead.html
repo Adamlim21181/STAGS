@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
+
 {% block content %}
 <div class="content">
-    <h2 id="leadtitle">
-        {{ apparatus_name }}
-    </h2>
+    <h2 id="leadtitle">Level {{ level }}: {{ apparatus_name }}</h2>
     <div class="appheader">
+        <!-- Loop through 'apps' and create a link for each -->
         {% for app in apps %}
             <a class="applinks" href="/apparatuslead/{{ level }}/{{ app[0] }}">{{ app[1] }}</a>
         {% endfor %}
@@ -13,12 +13,14 @@
     <div class="leadtable">
         <table>
             <tr>
+                <!-- table headers -->
                 <th>ID</th>
                 <th>Name</th>
                 <th>Difficulty</th>
                 <th>Execution</th>
                 <th>Total</th>
             </tr>
+            <!-- Loop through 'data' to fill table rows -->
             {% for row in data %}
             <tr>
                 {% for col in row %}
@@ -30,4 +32,5 @@
     </div>
 </div>
 {% endblock %}
+
 

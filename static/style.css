@@ -3,6 +3,8 @@ html {
   height: 100%;
   margin: 0;
   background-color: #eaeaea;
+  display: grid;
+  grid-template-rows: auto 1fr; 
 }
 
 .bold {
@@ -10,12 +12,13 @@ html {
 }
 
 .content {
-  height: 100%;
   margin-left: 15%;
   margin-right: 5%;
   padding: 1px 16px;
   font-family: "Times New Roman", Times, serif;
   color: #000000;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 /* Home Page */
@@ -24,7 +27,6 @@ html {
 #step3,
 #step4 {
   background-color: #ffffff;
-  /*this*/
   padding: 12px 20px;
   margin: 8px 0;
   width: 100%;
@@ -32,94 +34,67 @@ html {
   border-radius: 4px;
 }
 
-/*drop down table styling*/
-.drpbutton {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #000000;
-  border-radius: 4px;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.dropdown-content {
-  display: none;
-  position: relative;
-  background-color: #ffffff;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  margin: 0;
-}
-
-.show {
-  display: block;
-}
 
 /* Nav bar */
-
 ul {
-  width: 12%;
   margin: 0;
   padding: 0;
   background-color: #4CAF50;
-  position: fixed;
+  width: 12%;
   height: 100%;
-  text-align: center; /* Center the content */
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     
+  list-style-type: none;
 }
 
+li {
+  width: 100%;
+}
 li a {
-  font-size: 130%;
+  font-size: 140%;
   display: block;
   color: #000000;
-  padding: 7%;
+  padding: 15px;
   text-decoration: none;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 li:hover {
   background-color: #00ff66;
 }
 
-
-/* Forms */
-
-input[type="number"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #000000;
-  color: #000000;
-  border-radius: 5px;
-  box-sizing: border-box;
+#image:hover {
+  background-color: transparent;
 }
 
+/* Forms */
+input[type="number"],
 input[type="text"],
 select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #000000;
-  color: #000000;
   border-radius: 5px;
   box-sizing: border-box;
+  color: #000000;
 }
 
 input[type="submit"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: inline-block;
   border: 1px solid #000000;
   border-radius: 5px;
   background-color: #4CAF50;
-  box-sizing: border-box;
-  cursor: pointer;
   color: #000000;
+  cursor: pointer;
 }
 
 input[type="submit"]:hover {
@@ -129,13 +104,13 @@ input[type="submit"]:hover {
 .forms {
   border-radius: 5px;
   background-color: #ffffff;
-  /*this*/
   padding: 20px;
   margin-top: 3%;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 /* tables */
-
 table,
 td,
 th {
@@ -146,6 +121,11 @@ th {
 td,
 th {
   padding: 15px;
+}
+
+td {
+  overflow-x: auto;
+  max-width: 60px;
 }
 
 table {
@@ -159,7 +139,9 @@ table {
   padding: 20px;
   overflow-y: scroll;
   position: sticky;
-  height: 400px;
+  max-height: 400px;
+  display: grid;
+  grid-template-columns: 1fr;
   margin-top: 3%;
 }
 
@@ -167,10 +149,20 @@ table {
   font-size: 20px;
 }
 
+.leadtable {
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 20px;
+  overflow-y: scroll;
+  position: sticky;
+  max-height: 1000px; 
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 /* leaderboard links */
 #codelinks {
   background-color: #f6f6f6;
-  /*this*/
   border-radius: 5px;
   padding: 1px 10px;
 }
@@ -180,7 +172,7 @@ table {
   color: #000000;
   width: 100%;
   padding: 20px 20px;
-  display: inline-block;
+  display: inline-grid; 
   border: 1px solid #ffffff;
   border-radius: 5px;
   box-sizing: border-box;
@@ -192,22 +184,19 @@ table {
   background-color: #00ff66;
 }
 
-
-
 .drpbutton {
   background-color: #ffffff;
 }
 
 /* Leaderboard */
-
 .appheader {
   background-color: #4CAF50;
-  justify-content:space-evenly;
-  display: flex;
+  justify-content: space-evenly;
+  display: flex; 
+  align-items: center;
   border-radius: 5px;
   width: 80%;
   margin: 3% auto;
-  
 }
 
 .applinks {
@@ -215,17 +204,15 @@ table {
   color: #000000;
   font-size: large;
   padding: 1.5%;
-}
-
-.leadtable {
-  border-radius: 5px;
-  background-color: #ffffff;
-  padding: 20px;
-  margin-top: 3%;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .applinks:hover {
   background-color: #00ff66;
+  padding: auto;
 }
 
 #leadtitle {
@@ -233,30 +220,25 @@ table {
   text-transform: capitalize;
 }
 
-
 /* Footer */
-
 .footer {
   width: 80%;
   margin: 0 14%;
   padding: 10px;
   text-align: center;
   color: #000000;
+  display: grid;
+  justify-content: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 10px;
 }
 
 .footer-links a {
   text-decoration: none;
   color: #000000;
-  /**/
   padding: 10px;
 }
 
-/*404 error page*/
-
-.errorbody {
-  background-color:#eaeaea ;
-}
-
-.error {
-  background-color: #ffffff;
-}

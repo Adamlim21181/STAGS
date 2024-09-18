@@ -1,15 +1,19 @@
 {% extends 'layout.html' %}
+
 {% block content %}
-<div class = "content">
-    <div class = "forms">
+<div class="content">
+
+    <!-- Registering a new gymnast -->
+    <div class="forms">
         <h3>Register Gymnast</h3>
-        <!--Form to add gymnasts to the database-->
-        <form id = registor>
-            <p> Name: <input type="text" name = "registorname" required></p>
+        <!-- Form to add gymnasts to the database -->
+        <form id="registor">
+            <p> Name: <input type="text" name="registorname" required></p>
             <p>
                 Level: 
                 <select name="registorlevel" required>
             </p>
+            <!-- Dropdown options for gymnast levels -->
             <option value="" disabled selected hidden>Select</option>
             <option value="1">Level 1</option>
             <option value="2">Level 2</option>
@@ -24,12 +28,15 @@
             <input type="submit" />
         </form>
     </div>
+
     <p></p>
     <p></p>
-    <!--view registerd gymnasts-->
-    <div class = "tables">
+
+    <!-- View registered gymnasts -->
+    <div class="tables">
         <table>
             <tr>
+                <!-- Table header for the list of registered gymnasts -->
                 <th id="tableheader" colspan="3">Registered Gymnasts</th>
             </tr>
             <tr>
@@ -37,32 +44,36 @@
                 <th>Name</th>
                 <th>Level</th>
             </tr>
+            <!-- Loop through 'regdata' to fill the table rows -->
             {% for row in regdata %}
             <tr>
-                {% for i in row  %}
+                {% for i in row %}
                 <td>{{ i }}</td>
                 {% endfor %}
             </tr>
-            <tr>
-            </tr>
             {% endfor %}
         </table>
+        <!-- Display delete error message -->
         {% if delete_error %}
         <p style="color: red;">{{ delete_error }}</p>
         {% endif %}
     </div>
+
     <p></p>
+
+    <!-- Deleting a gymnast -->
     <div class="forms">
-        <h3>
-        Delete</h2>
+        <h3>Delete</h3>
         <form id="delete">
             <p> ID: <input type="number" name="deleteid" required></p>
             <input type="submit" value="Delete">
         </form>
     </div>
-    <div class = "forms">
+
+    <!-- Editing an existing gymnast -->
+    <div class="forms">
         <h3>Edit Registered Gymnasts</h3>
-        <!--edit registered gymnasts-->
+        <!-- Form to edit registered gymnasts -->
         <form id="editgymnast">
             <p> ID: <input type="number" name="id" required></p>
             <p> Name: <input type="text" name="newname" required></p>
@@ -70,6 +81,7 @@
                 Level: 
                 <select name="newlevel" required>
             </p>
+            <!-- Dropdown options for gymnast levels -->
             <option value="" disabled hidden selected>Select</option>
             <option value="1">Level 1</option>
             <option value="2">Level 2</option>
@@ -83,12 +95,15 @@
             </select>
             <input type="submit">
         </form>
+        <!-- Display error message -->
         {% if error_message %}
         <p style="color: red;">{{ error_message }}</p>
         {% endif %}
     </div>
+
     <p></p>
     <p></p>
     <p></p>
+
 </div>
 {% endblock %}

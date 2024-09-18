@@ -1,8 +1,17 @@
-/*this prevents the forms from sumbiting again when the page is reloaded*/
-const cleanUri = window.location.href.split('?')[0];
-    window.history.replaceState({}, document.title, cleanUri);
+/* This prevents the forms from submitting again when the page is reloaded
+   by removing the query parameters from the URL. This avoids duplicate
+   form submissions if the user refreshes the page. */
+   const cleanUri = window.location.href.split('?')[0];
+   window.history.replaceState({}, document.title, cleanUri);
 
-/* When the button is clicked switch between hiding and showing the dropdown content */
-function toggleDropdown(dropdownId) {
-    document.getElementById(dropdownId).classList.toggle("show");
-}
+// Add an event listener to the form's submit event
+document.getElementById('delete').addEventListener('submit', 
+   function() {location.reload();});
+
+
+ 
+
+
+
+
+   
