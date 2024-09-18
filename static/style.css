@@ -25,7 +25,8 @@ html {
 #step1,
 #step2,
 #step3,
-#step4 {
+#step4,
+#intro {
   background-color: #ffffff;
   padding: 12px 20px;
   margin: 8px 0;

@@ -8,13 +8,13 @@
         <h3>Register Gymnast</h3>
         <!-- Form to add gymnasts to the database -->
         <form id="registor">
-            <p> Name: <input type="text" name="registorname" required></p>
+            <p> Name: <input type="text" name="registorname" placeholder="Enter Gymnast Name" required></p>
             <p>
                 Level: 
                 <select name="registorlevel" required>
             </p>
             <!-- Dropdown options for gymnast levels -->
-            <option value="" disabled selected hidden>Select</option>
+            <option value="" disabled selected hidden>Select Level</option>
             <option value="1">Level 1</option>
             <option value="2">Level 2</option>
             <option value="3">Level 3</option>
@@ -65,7 +65,7 @@
     <div class="forms">
         <h3>Delete</h3>
         <form id="delete">
-            <p> ID: <input type="number" name="deleteid" required></p>
+            <p> ID: <input type="number" name="deleteid" placeholder="Enter Gymnast ID (Found in table above)" required></p>
             <input type="submit" value="Delete">
         </form>
     </div>
@@ -75,14 +75,14 @@
         <h3>Edit Registered Gymnasts</h3>
         <!-- Form to edit registered gymnasts -->
         <form id="editgymnast">
-            <p> ID: <input type="number" name="id" required></p>
-            <p> Name: <input type="text" name="newname" required></p>
+            <p> ID: <input type="number" name="id" placeholder="Enter Gymnast ID (Found in table above)" required></p>
+            <p> Name: <input type="text" name="newname" placeholder="Enter Gymnast Name" required></p>
             <p>
                 Level: 
                 <select name="newlevel" required>
             </p>
             <!-- Dropdown options for gymnast levels -->
-            <option value="" disabled hidden selected>Select</option>
+            <option value="" disabled hidden selected>Select Level</option>
             <option value="1">Level 1</option>
             <option value="2">Level 2</option>
             <option value="3">Level 3</option>

@@ -29,13 +29,13 @@
     <div class="forms">
         <h3>Register Scores</h3>
         <form>
-            <p>Gymnast ID: <input type="number" name="addgymnastid" required></p>
+            <p>Gymnast ID: <input type="number" name="addgymnastid" placeholder="Enter Gymnast ID (Found in table above)" required></p>
             <p>
                 Apparatus: 
                 <select name="app" required>
             </p>
             <!-- Dropdown options for apparatus -->
-            <option value="" disabled hidden selected>Select</option>
+            <option value="" disabled hidden selected>Select Apparatus</option>
             <option value="1">Floor</option>
             <option value="2">Pommel</option>
             <option value="3">Rings</option>
@@ -43,8 +43,8 @@
             <option value="5">P-bars</option>
             <option value="6">High Bar</option>
             </select>
-            <p>Execution Score: <input type="number" name="add-escore" min="0" max="10" step="0.01" required></p>
-            <p>Difficulty Score: <input type="number" name="add-dscore" min="0" max="10" step="0.01" required></p>
+            <p>Execution Score: <input type="number" name="add-escore" min="0" max="10" step="0.01" placeholder="Enter Execution Score" required></p>
+            <p>Difficulty Score: <input type="number" name="add-dscore" min="0" max="10" step="0.01" placeholder="Enter Difficulty Score" required></p>
             <input type="submit">
         </form>
         <!-- Display error message -->
@@ -86,7 +86,7 @@
     <div class="forms">
         <h3>Delete</h3>
         <form id="delete">
-            <p>Score ID: <input type="number" name="deleteid" required></p>
+            <p>Score ID: <input type="number" name="deleteid" placeholder="Enter Score ID (Found in table above)" required></p>
             <input type="submit" value="Delete">
         </form>
     </div>
@@ -95,13 +95,13 @@
     <div class="forms">
         <h3>Edit Registered Scores</h3>
         <form>
-            <p>Score ID: <input type="number" name="scoreid" required></p>
+            <p>Score ID: <input type="number" name="scoreid" placeholder="Enter Score ID (Found in table above)" required></p>
             <p>
                 Apparatus: 
                 <select name="appid" required>
             </p>
             <!-- Dropdown options for apparatus -->
-            <option value="" disabled hidden selected>Select</option>
+            <option value="" disabled hidden selected>Select Apparatus</option>
             <option value="1">Floor</option>
             <option value="2">Pommel</option>
             <option value="3">Rings</option>
@@ -109,8 +109,8 @@
             <option value="5">P-bars</option>
             <option value="6">High Bar</option>
             </select>
-            <p>Execution Score: <input type="number" name="newescore" min="0" max="10" step="0.01" required></p>
-            <p>Difficulty Score: <input type="number" name="newdscore" min="0" max="10" step="0.01" required></p>
+            <p>Execution Score: <input type="number" name="newescore" min="0" max="10" step="0.01" placeholder="Enter Execution Score" required></p>
+            <p>Difficulty Score: <input type="number" name="newdscore" min="0" max="10" step="0.01" placeholder="Enter Difficulty Score" required></p>
             <input type="submit">
         </form>
         <!-- Display error message -->
