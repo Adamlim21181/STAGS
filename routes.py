@@ -20,7 +20,7 @@ def internal_server_error(e):
 # Route for the homepage
 @app.route("/")
 def homepage():
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 # Route for adding and managing gymnasts
