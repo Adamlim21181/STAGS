@@ -1,47 +1,62 @@
-{% extends 'layout.html' %} 
+{% extends 'layout.html' %}
 {% block content %}
 <div class="content">
 
-  <h2>Gymnastics Scoring</h2>
-  
-  <!-- Introduction -->
-   <div id="intro">
-    <p>
-      Welcome to my Gymnast's competition score calculator. You can add gymnasts and scores to create a leaderboard for your competition. Here are some instructions to help you get started.
-    </p>
-   </div>
-  <!-- Step 1: Adding Gymnasts -->
-  <div id="step1">
-    <h3>Step 1 - Adding Gymnasts</h3>
-    <p>
-      To add your gymnasts to the competition, go to the <a href="/addgymnast">gymnast page</a> enter your gymnast's name and level in the first form, and click submit. Your gymnast should be added to the table underneath the form!
-    </p>
-  </div>
-  
-  <!-- Step 2: Adding Scores -->
-  <div id="step2">
-    <h3>Step 2 - Adding Scores</h3>
-    <p>
-      Next, to add your gymnast's scores, go to the <a href="/addscores">scores page</a> and enter your gymnast's ID (which can be found in the table above the form). Select an apparatus. Finally, add the execution scores and difficulty scores and click submit. Your scores should be added to the table underneath the form!
-    </p>
-  </div>
-  
-  <!-- Step 3: Viewing the Leaderboard -->
-  <div id="step3">
-    <h3>Step 3 - Leaderboard</h3>
-    <p>
-      Almost there! Go to the <a href="/scoredata">leaderboard page</a> and select the level leaderboard you want to view. You will find links at the top of the page to navigate different apparatuses. 
-    </p>
-  </div>
-  
-  <!-- Step 4: Adding More Data -->
-  <div id="step4">
-    <h3>Step 4 - Editing and Deleting</h3>
-    <p>
-      Finally, you can edit and delete your gymnasts and scores! On the <a href="/addgymnast">gymnast page</a> and <a href="/addscores">scores page</a>, at the bottom, there will be two forms, one for editing and one for deleting. Just fill out these forms, and you should see the changes in the same table above! 
-    </p>
-  </div>
+    <h2>Gymnastics Scoring</h2>
 
-</div>
+    <div id="intro">
+
+        <p>
+            Welcome to my Gymnastics competition scoring site. You can add gymnasts and scores to create a leaderboard
+            for your competition. Here are some instructions to help you get started.
+        </p>
+
+    </div><!-- intro -->
+
+
+    <div id="step1">
+
+        <h3>Step 1 - Adding Gymnasts</h3>
+        <p>
+            To add your gymnasts to the competition, go to the <a href="/addgymnast">gymnast page</a> enter your
+            gymnast's name and level in the first form, and click submit. Your gymnast should be added to the table
+            underneath the form!
+        </p>
+
+    </div><!-- step1 -->
+
+    <div id="step2">
+
+        <h3>Step 2 - Adding Scores</h3>
+        <p>
+            Next, to add your gymnast's scores, go to the <a href="/addscores">scores page</a> and enter your gymnast's
+            ID (which can be found in the table above the form). Select an apparatus. Finally, add the execution scores
+            and difficulty scores and click submit. Your scores should be added to the table underneath the form!
+        </p>
+
+    </div><!-- step2 -->
+
+    <div id="step3">
+
+        <h3>Step 3 - Leaderboard</h3>
+        <p>
+            Almost there! Go to the <a href="/scoredata">leaderboard page</a> and select the level leaderboard you want
+            to view. You will find links at the top of the page to navigate different apparatuses.
+        </p>
+
+    </div><!-- step3 -->
+
+    <div id="step4">
+
+        <h3>Step 4 - Editing and Deleting</h3>
+        <p>
+            Finally, you can edit and delete your gymnasts and scores! On the <a href="/addgymnast">gymnast page</a> and
+            <a href="/addscores">scores page</a>, at the bottom, there will be two forms, one for editing and one for
+            deleting. Just fill out these forms, and you should see the changes in the same table above!
+        </p>
+
+    </div><!-- step4 -->
+
+</div><!-- content -->
+
 {% endblock %}
-

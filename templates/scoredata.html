@@ -1,15 +1,21 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+{% block content %}
+
 <div class="content">
-  <h2>Levels</h2>
-  <div id="codelinks">
-    {% for level in levels %}
-    <p>
-      <!--Creates links to each gymnast level leaderboard-->
-      <a id="leadlink" href="/scorelead/{{level[2]}}"
-        >View scores for level {{ level[2] }}</a
-      >
-    </p>
-    {% endfor %}
-  </div>
-</div>
+
+    <h2>Levels</h2>
+
+    <div id="codelinks">
+
+        <!-- Loop through 'result' to create links for each level -->
+        {% for level in result %}
+
+        <a id="leadlink" href="/scorelead/{{level[2]}}">Level {{ level[2] }}</a>
+
+        {% endfor %}
+
+    </div><!-- codelinks -->
+
+</div><!-- content -->
+
 {% endblock %}

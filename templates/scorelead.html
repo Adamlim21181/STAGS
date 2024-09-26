@@ -5,25 +5,34 @@
     <h2 id="leadtitle">Level {{ level }}: All Around</h2>
 
     <div class="appheader">
-        {% for app in apps %}
-            <a class="applinks" href="/apparatuslead/{{ level }}/{{ app[0] }}">{{ app[1] }}</a>
+
+        <!-- Loop through results.apparatus and create a link for each -->
+        {% for app in result.apparatus %}
+        <a class="applinks" href="/apparatuslead/{{ level }}/{{ app[0] }}">{{ app[1] }}</a>
         {% endfor %}
-    </div>
-    
+
+    </div><!-- appheader -->
+
     <div class="leadtable">
+
         <table>
+
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Total Score</th>
             </tr>
-            {% for row in overalldata %}
+            <!-- Loop through results.all_leaderboard to fill table rows -->
+            {% for row in result.all_leaderboard %}
             <tr>
                 {% for col in row %}
                 <td>{{ col }}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
+
         </table>
-</div>
-{% endblock %}
+
+    </div><!-- leadtable -->
+
+    {% endblock %}
